@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="col-lg-4 mx-auto">
+    <h2>Form</h2>
+    <hr>
+    <form action=""
+        method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg">
+                {{ form.name|as_crispy_field }}
+            </div>
+            <div class="col-lg">
+                {{ form.last_name|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                {{ form.email|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                {{ form.phone|as_crispy_field }}
+            </div>
+            <div class="col-lg">
+                {{ form.phone1|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                {{ form.address|as_crispy_field }}
+            </div>
+            <div class="col-lg">
+                {{ form.address1|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                {{ form.zip_code|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+
+            {{ form.is_private|as_crispy_field }}
+        </div>
+        <hr>
+        <button type="submit">Submit</button>
+        <a class="btn btn-secondary"
+            href="{% url 'owner-list' %}">Cancel</a>
+    </form>
+</div>
+{% endblock content %}

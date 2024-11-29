@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container-fluid p-5">
+    <h2>{{object.get_name}}</h2>
+    <hr>
+    <p><strong>email: </strong><a
+            href="mailto:{{object.email}}">{{object.email}}</a></p>
+    <p><strong>phone: </strong><a
+            href="tel:{{object.phone}}">{{object.phone}}</a>,<a
+            href="tel:{{object.phone1}}">{{object.phone1}}</a></p>
+    <p><strong>address: </strong>{{object.address}}, {{object.address1}}</p>
+    <p><strong>Postal code: </strong>{{object.zip_code}}</p>
+    <hr>
+        <h2>Vehicles</h2>
+    {% for vehicle in object.vehicles.all %}
+    <p>{{forloop.counter}}. <a href="{{vehicle.get_absolute_url}}">{{vehicle}}</a></p>
+    {% endfor %}
+
+</div>
+{% endblock content %}

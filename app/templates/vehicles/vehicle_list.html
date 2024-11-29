@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+    <h1 class="display-4">Vehicles</h1>
+    <div class="pb-3">
+      
+        <a class="btn btn-sm btn-dark me-2"
+            href="{% url 'vehicle-create' %}">Add vehicle</a>
+        <a class="btn btn-sm btn-dark me-2"
+            href="{% url 'vehicle-make-create' %}">Add make</a>
+        <a class="btn btn-sm btn-dark"
+            href="{% url 'vehicle-model-create' %}">Add model</a>
+    </div>
+</div>
+
+<div class="mx-auto col-lg-4 py-2">
+    <form action=""
+        method="get">
+        <input type="search"
+            name="vehicles"
+            placeholder="Search...">
+    </form>
+</div>
+
+<table class="table table-sm table-hover small">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Chassis/Vin</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Model</th>
+            <th scope="col">Insurance</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ob in object_list %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td><a href="{{ob.get_absolute_url}}">{{ob.chassis_vin}}</a></td>
+            <td><a
+                    href="{{ob.owner.last.get_absolute_url}}">{{ob.owner.last}}</a>
+            </td>
+            <td><a href="">{{ob.model}}</a></td>
+            <td>{{ob.insurance}}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+{% endblock content %}
